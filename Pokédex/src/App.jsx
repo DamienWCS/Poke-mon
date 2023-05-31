@@ -41,11 +41,14 @@ const App = () => {
 
   return (
     <div>
-      <NavBar
-        onPreviousClick={handlePreviousClick}
-        onNextClick={handleNextClick}
-      />
+      <NavBar pokemonList={pokemonList} onPokemonClick={setPokemonIndex} />
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      {pokemonIndex > 0 && (
+        <button onClick={handlePreviousClick}>Précédent</button>
+      )}
+      {pokemonIndex < pokemonList.length - 1 && (
+        <button onClick={handleNextClick}>Suivant</button>
+      )}
     </div>
   );
 };
