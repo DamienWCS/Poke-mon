@@ -1,15 +1,3 @@
-function PokemonCard() {
-  const { name, imgSrc } = pokemonList[0];
-  return name === "bulbasaur" ? (
-    <figure>
-      <img src={imgSrc} alt={name} />
-      <figcaption>{name}</figcaption>
-    </figure>
-  ) : (
-    <p>???</p>
-  );
-}
-
 const pokemonList = [
   {
     name: "bulbasaur",
@@ -20,5 +8,22 @@ const pokemonList = [
     name: "mew",
   },
 ];
+
+function PokemonCard() {
+  return (
+    <div>
+      {pokemonList.map((pokemon) => (
+        <figure key={pokemon.name}>
+          {pokemon.imgSrc ? (
+            <img src={pokemon.imgSrc} alt={pokemon.name} />
+          ) : (
+            <p>???</p>
+          )}
+          <figcaption>{pokemon.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
+}
 
 export default PokemonCard;
